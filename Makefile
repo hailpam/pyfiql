@@ -2,7 +2,7 @@
 all: init test
 
 init:
-	pip install -r requirements.txt
+	pip install --user -r requirements.txt
 
 test:
 	python -m unittest tests
