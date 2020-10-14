@@ -1,8 +1,10 @@
 
+all: init test
+
 init:
-	pip install -r requriments.txt
+	pip install -r requirements.txt
 
 test:
-	py.test tests
+	python -m unittest tests
 
-.PHONY init tests
+.PHONY: all init tests
