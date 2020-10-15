@@ -1,7 +1,7 @@
 import sys
 sys.path.append(__file__.replace('examples/fiql.py', ''))
 
-from pyfiql import model, parser, util
+from pyfiql import model, parser, util, visitor
 
 def main():
     queries = [
@@ -25,6 +25,19 @@ def main():
     ]
     for p in parenthesis:
         print(p, parser.check_parenthesis(p))
+
+    queries = [
+        'name=="bar",dob=gt=1990-01-01',
+        '(product=="Apple",qty=lt=1);name=="Joe"',
+        '(qty=gt=1;(qty=gte=1,qty=lte=10));(product=="Apple",product=="HP")',
+        '(product=="Apple",product=="Google");(name=="Joe",name=="Alan");(qty=gte=1,qty=lte=10)',
+        '(((((product=="Apple",product=="Google");(name=="Joe",name=="Alan")));label=!~="text";(qty=gte=1,qty=lte=10)))'
+    ]
+    for query in queries:
+        root = parser.scan(query)
+        visit = visitor.SqlVisitor()
+        visitor.traversal(root, visit)
+        print(visit.expressions)
 
 if __name__ == '__main__':
     main()

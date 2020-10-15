@@ -85,16 +85,18 @@ def scan(string):
         raise FiqlMalformedParenthesis('%s has inconsistent precendence(s)' % string)
     if len(string) == 0:
         return None
-    root = Node()
+    root = None
     idx, string = find_token(string)
     if idx == -1:
         res = re.search(REGEXP_CONSTRAINT, string)
         try:
-            root.expression = Constraint(l_operand=res.group('loperand'), r_operand=res.group('roperand'), operator=res.group('operator'))
+            root = ExpressionNode()
+            root.constraint = Constraint(l_operand=res.group('loperand'), r_operand=res.group('roperand'), operator=res.group('operator'))
         except Exceptio as e:
             raise FiqlMalformedExpression('%s cannot be matched: %s' % (string, e))
     else:
-        root.expression = Constraint(operator=string[idx])
+        root = OperatorNode()
+        root.constraint = Constraint(operator=string[idx])
         root.l_child = scan(string[0:idx])
         root.r_child = scan(string[idx+1:])
     return root

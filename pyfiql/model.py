@@ -35,17 +35,17 @@ class Node:
     def __init__(self, l_child=None, r_child=None, constraint=None):
         self.l_child = l_child
         self.r_child = r_child
-
         self.constraint = constraint
+    
     def accept(self, visitor):
         '''
-            Accepts a Visito in and according to the node type it is going to apply
+            Accepts a Visitor in and according to the node type it is going to apply
             the custom and specific logic, upon any traversal of the AST.
         '''
         raise NotImplementedError('Should be implemented by concrete classes')
 
     def __str__(self):
-        return '{%s %s %s}' % (self.l_child, self.expression, self.r_child)
+        return '{%s %s %s}' % (self.l_child, self.constraint, self.r_child)
 
 class OperatorNode(Node):
     '''
