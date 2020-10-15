@@ -42,7 +42,15 @@ class JsonVisitor(Visitor):
                     ]
                 }
         '''
-        pass
+        r_expression = self.expressions.pop()
+        l_expression = self.expressions.pop()
+        operator = SQL_LOGICAL_OPERATOR[node.constraint.operator]
+        self.expressions.append({
+            operator: [
+                l_expression,
+                r_expression
+            ]
+        })
 
     def visit_expression(self, node):
         '''
@@ -56,7 +64,13 @@ class JsonVisitor(Visitor):
                 ]
             }
         '''
-        pass
+        operator = SQL_CONSTRAINT_OPERATOR[node.constraint.operator]
+        self.expressions.append({
+            operator: [
+                node.constraint.l_operand,
+                node.constraint.r_operand
+            ]
+        })
 
 class SqlVisitor(Visitor):
     '''
