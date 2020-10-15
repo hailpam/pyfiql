@@ -1,7 +1,7 @@
 import sys
 sys.path.append(__file__.replace('examples/fiql.py', ''))
 
-from pyfiql import model, parser
+from pyfiql import model, parser, util
 
 def main():
     queries = [
@@ -15,7 +15,7 @@ def main():
     for query in queries:
         print(query)
         root = parser.scan(query)
-        parser.traverse(root, 0)
+        util.pretty_printing(root, 0)
 
     parenthesis = [
         '((()))',
