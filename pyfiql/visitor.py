@@ -1,7 +1,7 @@
 
 from pyfiql.definition import *
+from pyfiql.exception import *
 
-NOT_IMPLEMENTED_ERROR = 'Method to be implemented with specific logic'
 
 class Visitor():
     '''

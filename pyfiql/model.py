@@ -1,4 +1,6 @@
 
+from pyfiql.exception import *
+
 class Constraint:
     '''
         According to the FIQL standard, it models a constraint in the form of:
@@ -42,7 +44,7 @@ class Node:
             Accepts a Visitor in and according to the node type it is going to apply
             the custom and specific logic, upon any traversal of the AST.
         '''
-        raise NotImplementedError('Should be implemented by concrete classes')
+        raise NotImplementedError(NOT_IMPLEMENTED_ERROR)
 
     def __str__(self):
         return '{%s %s %s}' % (self.l_child, self.constraint, self.r_child)

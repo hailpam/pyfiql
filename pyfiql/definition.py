@@ -16,7 +16,8 @@ CONSTRAINT_OPERATOR = [
     '=lt=',
     '=gt=',
     '=lte=',
-    '=gte='
+    '=gte=',
+    '=!~='
 ]
 
 # Translation table of FIQL logical operators and SQL ones.
@@ -47,5 +48,6 @@ JSON_CONSTRAINT_OPERATOR = {
     '=lt=': '<',
     '=gt=': '>',
     '=lte=': '<=',
-    '=gte=': '>='
+    '=gte=': '>=',
+    '=!~=': '~'
 }

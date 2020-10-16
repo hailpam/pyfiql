@@ -1,4 +1,6 @@
 
+NOT_IMPLEMENTED_ERROR = 'Method to be implemented with specific logic'
+
 class FiqlError(Exception):
     '''
         Base error. It fills up the error message with a custom-provided one.
