@@ -2,7 +2,7 @@
 # TODO - try to find a regexp able to check the overall validity (instead of incremental checks)
 
 # Regexp able to extract named match groups from a FIQL constraint instance.
-REGEXP_CONSTRAINT = r'(?P<loperand>[\w-]+)(?P<operator>=.{0,}=)(?P<roperand>[\"\w-]+)'
+REGEXP_CONSTRAINT = r'(?P<loperand>[\w-]+)(?P<operator>=.{0,}=)(?P<roperand>[\*\"\w-]+)'
 
 # FIQL logical operators.
 LOGICAL_OPERATOR = [

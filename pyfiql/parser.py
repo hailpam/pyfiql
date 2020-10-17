@@ -92,7 +92,7 @@ def scan(string):
         try:
             root = ExpressionNode()
             root.constraint = Constraint(l_operand=res.group('loperand'), r_operand=res.group('roperand'), operator=res.group('operator'))
-        except Exceptio as e:
+        except Exception as e:
             raise FiqlMalformedExpression('%s cannot be matched: %s' % (string, e))
     else:
         root = OperatorNode()
