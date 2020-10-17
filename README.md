@@ -6,7 +6,9 @@ The Feed Item Query Language (FIQL, pronounced "fickle") is a simple
 but flexible, URI-friendly syntax for expressing filters across the
 entries in a syndicated feed.  For example,
 
+```bash
 title==foo*;(updated=lt=-P1D,title==*bar)
+```
 
 will return all entries in a feed that meet the following criteria;
 
@@ -137,7 +139,7 @@ name=="bar",date=gt=1990-01-01
 ['((product = "Apple" OR qty < 1) AND name = "Joe")']
 ```
 
-### JSON
+### JSON (Polish Notation)
 
 ```python
 queries = [
