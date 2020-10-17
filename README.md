@@ -1,6 +1,19 @@
 # Overview [![Build Status](https://travis-ci.org/hailpam/pyfiql.svg?branch=main)](https://travis-ci.org/hailpam/pyfiql)
 PyFiql is a versatile parser for the [Feed Item Query Language](https://tools.ietf.org/html/draft-nottingham-atompub-fiql-00). Once deserialized the string into an Abstract Syntax Tree (AST), the library provides the ability to re-serialize it in a number of custom formats leveraging a support based on the Visitor design pattern. An expression can be then transformed into filters for a traditional SQL database or any other NoSQL one (e.g. MongoDB or even Elasticsearch).
 
+With an example:
+
+```bash
+title==foo*;(updated=lt=-P1D,title==*bar*)
+[ ; ]
+        [title == foo*]
+        [ , ]
+                [updated =lt= -P1D]
+                [title == *bar*]
+```
+
+The library takes in input a complex expression, parses it, creates an AST that can be then re-used and finally allows to travers the AST to either intepret or re-serialize using another format (so, allowing format mediation).
+
 ## About FIQL
 The Feed Item Query Language (FIQL, pronounced "fickle") is a simple
 but flexible, URI-friendly syntax for expressing filters across the
