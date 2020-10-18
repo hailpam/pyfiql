@@ -9,4 +9,8 @@ test:
 	python tests/test_model.py
 	python tests/test_visitor.py
 
-.PHONY: all init tests
+run-examples:
+	python examples/ast_example.py
+	python examples/visitor_example.py
+
+.PHONY: all init tests run-example
